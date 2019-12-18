@@ -59,3 +59,6 @@ RUN mkdir /usr/bin &&\
 WORKDIR /src
 
 ENTRYPOINT ["/bin/bash"]
+
+ONBUILD ARG TERRAFORM
+ONBUILD RUN if [ -n "$TERRAFORM" ]; then tfenv install "$TERRAFORM"; fi
