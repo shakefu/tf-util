@@ -22,8 +22,11 @@ RUN apt-get update -yqq &&\
         libdigest-sha-perl \
         unzip &&\
     cd /usr/local/share &&\
+    # https://github.com/stedolan/jq/releases
     curl -sL https://github.com/stedolan/jq/releases/download/jq-$JQ/jq-linux64 > /usr/local/bin/jq &&\
+    # https://github.com/terraform-linters/tflint/releases
     curl -sL https://github.com/terraform-linters/tflint/releases/download/v$TFLINT/tflint_linux_amd64.zip | funzip > /usr/local/bin/tflint &&\
+    # https://github.com/tfutils/tfenv/releases
     curl -sL https://github.com/tfutils/tfenv/archive/v$TFENV.tar.gz | tar -xz &&\
     ln -s /usr/local/share/tfenv-$TFENV/bin/* /usr/local/bin/ &&\
     chmod +x /usr/local/bin/tflint &&\
