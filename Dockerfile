@@ -1,12 +1,14 @@
-ARG CURL=7.67.0
+# ARG CURL=7.67.0
+ARG UBUNTU=19.04
+ARG CURL=latest
+ARG BUSYBOX=glibc
 ARG TFENV=1.0.2
 ARG TFLINT=0.13.2
 ARG JQ=1.6
 ARG TERRAFORM=0.11.14
 
-FROM ubuntu:19.10 AS build
+FROM ubuntu:$UBUNTU AS build
 
-ARG CURL
 ARG TFENV
 ARG TFLINT
 ARG JQ
@@ -35,9 +37,9 @@ RUN apt-get update -yqq &&\
 # RUN tfenv install $(tfenv list-remote | head -1) &&\
 #     tfenv install $TERRAFORM
 
-FROM shakefu/curl-static AS curl
+FROM shakefu/curl-static:$CURL AS curl
 
-FROM busybox:glibc AS final
+FROM busybox:$BUSYBOX AS final
 
 ARG TFENV
 
