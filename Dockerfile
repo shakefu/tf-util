@@ -34,9 +34,6 @@ RUN apt-get update -yqq &&\
     chmod +x /usr/local/bin/tflint &&\
     chmod +x /usr/local/bin/jq
 
-# RUN tfenv install $(tfenv list-remote | head -1) &&\
-#     tfenv install $TERRAFORM
-
 FROM shakefu/curl-static:$CURL AS curl
 
 FROM busybox:$BUSYBOX AS final
