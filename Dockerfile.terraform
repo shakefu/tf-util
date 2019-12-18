@@ -1,0 +1,3 @@
+FROM shakefu/tf-util:latest
+
+# No content, we use build args to specify terraform version
